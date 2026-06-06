@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Resume</title>
+</head>
+<body>
+
+  <h1>John Doe — Software Engineer</h1>
+  <p>I invest in equities, crypto, and ETFs.</p>
+
+  <!-- ── PORTFOLIO WIDGET ──────────────────────────────────────────── -->
+
+  <div id="my-portfolio"></div>
+
+  <script src="https://cdn.jsdelivr.net/gh/YOUR_USERNAME/portfolio-widget/portfolio-widget.js"></script>
+  <script>
+    PortfolioWidget.init({
+      container:   '#my-portfolio',
+      title:       'My Investment Portfolio',
+      lastUpdated: '2024-06-01',   // update whenever you refresh prices
+      theme:       'auto',         // follows visitor's OS preference
+      currency:    'USD',
+
+      assets: [
+        // ── Edit these with your own holdings ──
+        // allocation values must sum to 100
+        {
+          ticker:        'AAPL',
+          name:          'Apple Inc.',
+          allocation:    40,           // 40% of portfolio
+          purchaseDate:  '2022-01-15',
+          purchasePrice: 172.50,
+          currentPrice:  213.00,       // ← update this manually
+        },
+        {
+          ticker:        'BTC',
+          name:          'Bitcoin',
+          allocation:    35,
+          purchaseDate:  '2021-06-01',
+          purchasePrice: 35000,
+          currentPrice:  67000,        // ← update this manually
+        },
+        {
+          ticker:        'VTI',
+          name:          'Vanguard Total Market ETF',
+          allocation:    25,
+          purchaseDate:  '2020-03-01',
+          purchasePrice: 140.00,
+          currentPrice:  242.00,       // ← update this manually
+        },
+      ]
+    });
+  </script>
+
+  <!-- ─────────────────────────────────────────────────────────────── -->
+
+</body>
+</html>

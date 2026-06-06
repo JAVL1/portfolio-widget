@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>portfolio-widget — demo</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      background: #f4f4f5;
+      color: #18181b;
+      padding: 2rem 1rem;
+    }
+    @media (prefers-color-scheme: dark) {
+      body { background: #09090b; color: #f4f4f5; }
+      h1, h2, p, code { color: #f4f4f5; }
+      .subtitle { color: #a1a1aa; }
+      pre { background: #18181b; border-color: #27272a; }
+      .code-label { color: #71717a; }
+    }
+    .page { max-width: 900px; margin: 0 auto; }
+    .hero { margin-bottom: 2.5rem; }
+    h1 { font-size: 28px; font-weight: 700; margin-bottom: 0.5rem; }
+    .subtitle { font-size: 15px; color: #52525b; margin-bottom: 0.25rem; }
+    .badge {
+      display: inline-block;
+      background: #18181b;
+      color: #f4f4f5;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      letter-spacing: 0.04em;
+      margin-top: 0.5rem;
+    }
+    @media (prefers-color-scheme: dark) { .badge { background: #3f3f46; } }
+    section { margin-bottom: 2.5rem; }
+    h2 { font-size: 15px; font-weight: 600; margin-bottom: 1rem; color: #52525b; text-transform: uppercase; letter-spacing: 0.05em; }
+    pre {
+      background: #18181b;
+      color: #e4e4e7;
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.7;
+      border: 1px solid #27272a;
+      margin-bottom: 1rem;
+    }
+    .code-label { font-size: 11px; color: #71717a; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.5rem; font-weight: 500; }
+    code { font-family: 'SF Mono', 'Fira Code', Consolas, monospace; }
+    .kw { color: #c084fc; }
+    .str { color: #86efac; }
+    .num { color: #fb923c; }
+    .cm { color: #71717a; }
+    .key { color: #93c5fd; }
+    #demo-light { margin-bottom: 1.5rem; }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <div class="hero">
+      <h1>portfolio-widget</h1>
+      <p class="subtitle">A lightweight, embeddable investment return tracker for personal websites &amp; resumes.</p>
+      <span class="badge">v1.0 · MIT · ~6kb</span>
+    </div>
+
+    <!-- ── LIVE DEMO ── -->
+    <section>
+      <h2>Live demo — light theme</h2>
+      <div id="demo-light"></div>
+    </section>
+
+    <section>
+      <h2>Live demo — dark theme</h2>
+      <div id="demo-dark"></div>
+    </section>
+
+    <!-- ── EMBED CODE ── -->
+    <section>
+      <h2>Embed code</h2>
+      <div class="code-label">Drop this into any HTML page</div>
+      <pre><code><span class="cm">&lt;!-- 1. Add a container --&gt;</span>
+<span class="kw">&lt;div</span> <span class="key">id</span>=<span class="str">"my-portfolio"</span><span class="kw">&gt;&lt;/div&gt;</span>
+
+<span class="cm">&lt;!-- 2. Load the widget --&gt;</span>
+<span class="kw">&lt;script</span> <span class="key">src</span>=<span class="str">"https://cdn.jsdelivr.net/gh/YOUR_USERNAME/portfolio-widget/portfolio-widget.js"</span><span class="kw">&gt;&lt;/script&gt;</span>
+
+<span class="cm">&lt;!-- 3. Configure your holdings --&gt;</span>
+<span class="kw">&lt;script&gt;</span>
+  PortfolioWidget.<span class="kw">init</span>({
+    <span class="key">container</span>:    <span class="str">'#my-portfolio'</span>,
+    <span class="key">title</span>:        <span class="str">'My Investment Portfolio'</span>,
+    <span class="key">lastUpdated</span>:  <span class="str">'2024-06-01'</span>,   <span class="cm">// update this when you update prices</span>
+    <span class="key">assets</span>: [
+      {
+        <span class="key">ticker</span>:        <span class="str">'AAPL'</span>,
+        <span class="key">name</span>:          <span class="str">'Apple Inc.'</span>,
+        <span class="key">allocation</span>:    <span class="num">40</span>,              <span class="cm">// % of total portfolio</span>
+        <span class="key">purchaseDate</span>:  <span class="str">'2022-01-15'</span>,
+        <span class="key">purchasePrice</span>: <span class="num">172.50</span>,
+        <span class="key">currentPrice</span>:  <span class="num">213.00</span>,          <span class="cm">// update manually (v2 will auto-fetch)</span>
+      },
+      {
+        <span class="key">ticker</span>:        <span class="str">'BTC'</span>,
+        <span class="key">name</span>:          <span class="str">'Bitcoin'</span>,
+        <span class="key">allocation</span>:    <span class="num">35</span>,
+        <span class="key">purchaseDate</span>:  <span class="str">'2021-06-01'</span>,
+        <span class="key">purchasePrice</span>: <span class="num">35000</span>,
+        <span class="key">currentPrice</span>:  <span class="num">67000</span>,
+      },
+      {
+        <span class="key">ticker</span>:        <span class="str">'VTI'</span>,
+        <span class="key">name</span>:          <span class="str">'Vanguard Total Market'</span>,
+        <span class="key">allocation</span>:    <span class="num">25</span>,
+        <span class="key">purchaseDate</span>:  <span class="str">'2020-03-01'</span>,
+        <span class="key">purchasePrice</span>: <span class="num">140.00</span>,
+        <span class="key">currentPrice</span>:  <span class="num">242.00</span>,
+      },
+    ]
+  });
+<span class="kw">&lt;/script&gt;</span></code></pre>
+    </section>
+
+    <!-- ── ALL OPTIONS ── -->
+    <section>
+      <h2>All configuration options</h2>
+      <pre><code>PortfolioWidget.<span class="kw">init</span>({
+  <span class="cm">// Required</span>
+  <span class="key">assets</span>:       [],              <span class="cm">// array of asset objects (see above)</span>
+
+  <span class="cm">// Layout</span>
+  <span class="key">container</span>:    <span class="str">'#my-portfolio'</span>, <span class="cm">// CSS selector or DOM element</span>
+  <span class="key">title</span>:        <span class="str">null</span>,            <span class="cm">// optional string shown above widget</span>
+  <span class="key">height</span>:       <span class="num">220</span>,             <span class="cm">// chart height in px</span>
+  <span class="key">showStats</span>:    <span class="kw">true</span>,            <span class="cm">// show summary stat cards</span>
+  <span class="key">showTable</span>:    <span class="kw">true</span>,            <span class="cm">// show holdings breakdown table</span>
+
+  <span class="cm">// Style</span>
+  <span class="key">theme</span>:        <span class="str">'auto'</span>,          <span class="cm">// 'light' | 'dark' | 'auto'</span>
+  <span class="key">accentColor</span>:  <span class="str">null</span>,            <span class="cm">// override chart line hex, e.g. '#6366f1'</span>
+
+  <span class="cm">// Localisation</span>
+  <span class="key">currency</span>:     <span class="str">'USD'</span>,           <span class="cm">// ISO 4217 code: 'EUR', 'GBP', 'JPY' …</span>
+  <span class="key">locale</span>:       <span class="str">'en-US'</span>,         <span class="cm">// BCP 47 locale for number/date formatting</span>
+
+  <span class="cm">// Footer</span>
+  <span class="key">lastUpdated</span>:  <span class="str">null</span>,            <span class="cm">// date string shown in footer, e.g. '2024-06-01'</span>
+});</code></pre>
+    </section>
+
+  </div>
+
+  <script src="../portfolio-widget.js"></script>
+  <script>
+    // Light theme demo
+    PortfolioWidget.init({
+      container: '#demo-light',
+      title: 'My Investment Portfolio',
+      theme: 'light',
+      lastUpdated: '2024-06-01',
+      assets: [
+        { ticker: 'AAPL',  name: 'Apple Inc.',            allocation: 35, purchaseDate: '2021-01-15', purchasePrice: 128.00, currentPrice: 213.00 },
+        { ticker: 'BTC',   name: 'Bitcoin',               allocation: 25, purchaseDate: '2020-10-01', purchasePrice: 10500,  currentPrice: 67000  },
+        { ticker: 'VTI',   name: 'Vanguard Total Market', allocation: 25, purchaseDate: '2019-03-01', purchasePrice: 144.00, currentPrice: 242.00 },
+        { ticker: 'NVDA',  name: 'NVIDIA Corp.',          allocation: 10, purchaseDate: '2022-06-01', purchasePrice: 168.00, currentPrice: 875.00 },
+        { ticker: 'BONDS', name: 'US Treasury Bond ETF',  allocation: 5,  purchaseDate: '2021-07-01', purchasePrice: 100.00, currentPrice:  97.00 },
+      ]
+    });
+
+    // Dark theme demo
+    PortfolioWidget.init({
+      container: '#demo-dark',
+      title: 'My Investment Portfolio',
+      theme: 'dark',
+      accentColor: '#818cf8',
+      lastUpdated: '2024-06-01',
+      assets: [
+        { ticker: 'AAPL',  name: 'Apple Inc.',            allocation: 35, purchaseDate: '2021-01-15', purchasePrice: 128.00, currentPrice: 213.00 },
+        { ticker: 'BTC',   name: 'Bitcoin',               allocation: 25, purchaseDate: '2020-10-01', purchasePrice: 10500,  currentPrice: 67000  },
+        { ticker: 'VTI',   name: 'Vanguard Total Market', allocation: 25, purchaseDate: '2019-03-01', purchasePrice: 144.00, currentPrice: 242.00 },
+        { ticker: 'NVDA',  name: 'NVIDIA Corp.',          allocation: 10, purchaseDate: '2022-06-01', purchasePrice: 168.00, currentPrice: 875.00 },
+        { ticker: 'BONDS', name: 'US Treasury Bond ETF',  allocation: 5,  purchaseDate: '2021-07-01', purchasePrice: 100.00, currentPrice:  97.00 },
+      ]
+    });
+  </script>
+</body>
+</html>
