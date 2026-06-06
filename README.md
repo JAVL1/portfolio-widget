@@ -164,4 +164,4 @@ Please keep the widget self-contained in a single file with no npm dependencies.
 
 ## License
 
-MIT © YOUR_NAME
+MIT © JAVL
