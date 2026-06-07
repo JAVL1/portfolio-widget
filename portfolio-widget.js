@@ -1,7 +1,7 @@
 /*!
  * portfolio-widget v1.0.0
  * A lightweight, embeddable investment portfolio tracker for personal websites.
- * https://github.com/YOUR_USERNAME/portfolio-widget
+ * https://github.com/JAVL1/portfolio-widget
  * MIT License
  *
  * QUICK START:
