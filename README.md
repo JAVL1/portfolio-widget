@@ -4,7 +4,6 @@ A lightweight (~6kb), zero-dependency embeddable investment portfolio tracker fo
 
 Drop in a `<script>` tag, add your holdings, and get a beautiful line chart of your cumulative return over time — no backend, no build step, no framework.
 
-![demo screenshot](demo/screenshot.png)
 
 ---
 
